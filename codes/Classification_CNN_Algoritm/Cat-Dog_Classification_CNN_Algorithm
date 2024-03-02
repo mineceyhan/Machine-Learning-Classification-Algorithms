@@ -1,0 +1,38 @@
+import tensorflow as tf 
+from keras import layers, models
+from keras.preprocessing.image import ImageDataGenerator
+
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                    shear_range=0.2,
+                                    zoom_range=0.2,
+                                    horizontal_flip= True)
+training_set = train_datagen.flow_from_directory('C:/#/#/training_set',
+                                                 target_size=(64,64),
+                                                 batch_size=32,
+                                                 class_mode='binary')
+print(training_set.class_indices)
+test_datagen = ImageDataGenerator(rescale = 1./255)
+test_set = test_datagen.flow_from_directory('C:/#/#//test_set',
+                                                 target_size=(64,64),
+                                                 batch_size=32,
+                                                 class_mode='binary')
+
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(32, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Flatten())
+model.add(layers.Dense(128, activation='relu')) # 128 = 64+64 Hidden layers
+model.add(layers.Dense(units=1, activation='sigmoid')) # Output layer : sigmoid for classification
+
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+history = model.fit(training_set, validation_data=test_set, epochs=35)  
+
+#model.save('C:/#/#/Documents/saved_model.h5')
+
+

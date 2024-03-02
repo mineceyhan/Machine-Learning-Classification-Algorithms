@@ -1,0 +1,33 @@
+# Package Metadata
+Name: tensorflow
+Version: 2.12.0
+Summary: TensorFlow is an open source machine learning framework for everyone.
+Home-page: https://www.tensorflow.org/
+Author: Google Inc.
+Author-email: packages@tensorflow.org
+License: Apache 2.0
+Location: C:\Users\ceyha\AppData\Local\Programs\Python\Python311\Lib\site-packages
+Requires: tensorflow-intel
+
+Name: keras
+Version: 2.12.0
+Summary: Deep learning for humans.
+Home-page: https://keras.io/
+Author: Keras team
+Author-email: keras-users@googlegroups.com
+License: Apache 2.0
+Location: C:\Users\ceyha\AppData\Local\Programs\Python\Python311\Lib\site-packages
+Requires:
+Required-by: tensorflow-intel
+
+#Dataset Kaggle Cat and Dog Dataset
+This dataset is taken from the Kaggle platform and contains photos of cats and dogs. The dataset is divided into two parts as training and test datasets.
+Training Dataset:
+The training dataset contains the photos used to train the model. The training dataset is located under a folder named "train" and its content is as follows
+Cat: A folder containing cat photos. The photos consist of labelled photos belonging to the cat category.
+Dog: A folder with photos of dogs. Photos consist of labelled photos belonging to the dog category.
+Test Dataset:
+Cat: A folder containing cat photos. The photos consist of labelled photos belonging to the cat category.
+Dog: A folder with photos of dogs. Photos consist of labelled photos belonging to the dog category.
+
+Dataset Source: https://www.kaggle.com/datasets/tongpython/cat-and-dog
